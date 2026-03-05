@@ -68,6 +68,7 @@ GET /api/reporting?orgId=1&startDate=YYYY-MM-DD&endDate=YYYY-MM-DD&metrics=reven
 La aplicación fue diseñada siguiendo un enfoque simple basado en separación de responsabilidades (Separation of Concerns) y una arquitectura por capas.
 Cada módulo tiene una responsabilidad clara y evita mezclar lógica de negocio, acceso a datos y capa HTTP.
 
+```
 API Layer
 ↓
 Reporting Service
@@ -75,11 +76,13 @@ Reporting Service
 Data Access
 ↓
 Database
+```
 
 --
 
 Dentro del sistema de reporting, los módulos están organizados de la siguiente manera:
 
+```
 lib/
 ├── db.ts → conexión a PostgreSQL
 └── reporting/
@@ -87,13 +90,14 @@ lib/
 ├── query.ts → recuperación de datos
 ├── metrics.ts → lógica de métricas de negocio
 └── index.ts → orquestación del sistema de reporting
+```
 
 Esta organización sigue el principio Single Responsibility Principle (SRP) donde cada archivo tiene una responsabilidad única.
 
 ### Función de reporting independiente
 
 La función `getReport()` actúa como el orquestador del sistema de reporting.
-Esta función es independiente de la capa HTTP y no tiene conocimiento del endpoint REST.
+Esta función es independiente de la capa HTTP y no tiene conocimiento del endpoint.
 
 Esto permite reutilizar la lógica de reporting en distintos contextos, por ejemplo:
 
